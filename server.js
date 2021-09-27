@@ -2,8 +2,7 @@
 
 const http = require('http');
 var fs = require('fs');
-
-http.createServer((req, res)=> {
+const server = http.createServer((req, res)=> {
   
     fs.readFile('index.html', (err, data) => {
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -11,4 +10,7 @@ http.createServer((req, res)=> {
     return res.end();   
     });
  
-  }).listen(8084);
+  });
+
+  const PORT = process.env.PORT || 8042;
+  server.listen(PORT);
